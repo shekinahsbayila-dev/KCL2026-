@@ -4,345 +4,619 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>KCL2026 — King's Champion's League</title>
+  <meta name="description" content="KCL2026 — LA KING'S CHAMPION'S LEAGUE. Tournoi de basketball à Kinshasa.">
+  <meta name="theme-color" content="#08080c">
+
+  <title>KCL2026 — LA KING'S CHAMPION'S LEAGUE</title>
 
   <style>
+    :root {
+      --rouge: #e51b35;
+      --violet: #8b35ff;
+      --noir: #08080c;
+      --noir2: #111117;
+      --noir3: #181820;
+      --blanc: #ffffff;
+      --gris: #a7a7b5;
+      --bordure: #2a2a35;
+      --vert: #20c997;
+      --orange: #ff9f43;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #09090d;
-      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--noir);
+      color: var(--blanc);
+      line-height: 1.5;
     }
 
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #252530;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: 1px;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    .logo span {
-      color: #8b35ff;
-    }
-
-    .menu {
-      font-size: 25px;
+    button {
       cursor: pointer;
     }
 
-    .hero {
-      min-height: 600px;
-      padding: 70px 22px;
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 8, 12, 0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--bordure);
+    }
+
+    .nav {
+      height: 74px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    nav a {
+      color: #ddddE5;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .menu-button {
+      display: none;
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
+      color: white;
+      border-radius: 10px;
+      padding: 9px 13px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 700px;
+      display: flex;
+      align-items: center;
       background:
-        radial-gradient(circle at 80% 20%, #7b1fff55, transparent 35%),
-        radial-gradient(circle at 10% 80%, #e51b3555, transparent 35%),
-        #09090d;
+        radial-gradient(circle at 5% 20%, rgba(229, 27, 53, 0.30), transparent 32%),
+        radial-gradient(circle at 95% 10%, rgba(139, 53, 255, 0.30), transparent 35%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      padding: 70px 0;
     }
 
     .badge {
       display: inline-block;
-      width: fit-content;
-      padding: 8px 14px;
-      border: 1px solid #8b35ff;
-      border-radius: 30px;
-      color: #d8bfff;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      padding: 8px 13px;
+      border: 1px solid var(--bordure);
+      background: var(--noir2);
+      border-radius: 999px;
+      color: #ddd;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: clamp(40px, 7vw, 76px);
       line-height: 0.95;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    h1 span {
-      color: #a94cff;
+      margin: 20px 0 15px;
+      letter-spacing: -2px;
     }
 
     .slogan {
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      margin-bottom: 25px;
+      font-size: clamp(25px, 4vw, 38px);
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--rouge), var(--violet));
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .info {
-      color: #c9c9d2;
-      line-height: 1.7;
-      margin-bottom: 30px;
+    .hero-description {
+      max-width: 700px;
+      color: var(--gris);
+      margin-top: 20px;
+      font-size: 16px;
     }
 
-    .buttons {
+    .hero-actions {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 12px;
+      margin-top: 28px;
     }
 
-    .btn {
-      padding: 16px;
-      border-radius: 10px;
-      text-align: center;
-      text-decoration: none;
-      font-weight: bold;
+    .button {
+      display: inline-block;
       border: none;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .primary {
-      background: linear-gradient(90deg, #e51b35, #8b35ff);
+      border-radius: 12px;
+      padding: 13px 18px;
+      font-weight: 900;
       color: white;
+      background: linear-gradient(90deg, var(--rouge), var(--violet));
     }
 
-    .secondary {
-      background: #17171f;
-      color: white;
-      border: 1px solid #343442;
+    .button-secondary {
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
     }
 
-    .section {
-      padding: 45px 20px;
+    .hero-logo {
+      min-height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo img {
+      width: min(360px, 90%);
+      max-height: 360px;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 40px rgba(139, 53, 255, 0.25));
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 70px 0;
     }
 
     .section-title {
-      font-size: 27px;
-      margin-bottom: 25px;
-      font-weight: 900;
+      margin-bottom: 28px;
     }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: var(--gris);
+    }
+
+    /* =========================
+       INFO CARDS
+    ========================= */
 
     .cards {
       display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
     }
 
     .card {
-      background: #14141b;
-      border: 1px solid #282832;
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .info-number {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .info-label {
+      color: var(--gris);
+      font-size: 13px;
+    }
+
+    /* =========================
+       TABS
+    ========================= */
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      border: 1px solid var(--bordure);
+      background: var(--noir2);
+      color: #ddd;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 800;
+    }
+
+    .tab.active {
+      background: linear-gradient(90deg, var(--rouge), var(--violet));
+      border-color: transparent;
+      color: white;
+    }
+
+    /* =========================
+       BRACKET
+    ========================= */
+
+    .bracket-container {
+      overflow-x: auto;
+      padding-bottom: 15px;
+    }
+
+    .bracket {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(230px, 1fr));
+      gap: 20px;
+      min-width: 1000px;
+    }
+
+    .round-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #ddd;
+      margin-bottom: 13px;
+    }
+
+    .bracket-match {
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    .bracket-team {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #292932;
+      font-size: 13px;
+    }
+
+    .bracket-team:last-child {
+      border-bottom: none;
+    }
+
+    .score {
+      font-weight: 900;
+    }
+
+    .match-status {
+      color: var(--gris);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    /* =========================
+       MATCHS
+    ========================= */
+
+    .matches-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .match-card {
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
       border-radius: 15px;
-      padding: 22px;
+      padding: 18px;
     }
 
-    .card-icon {
-      font-size: 30px;
-      margin-bottom: 12px;
+    .match-header {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gris);
+      font-size: 12px;
     }
 
-    .card h3 {
-      margin-bottom: 8px;
+    .teams-versus {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    .card p {
-      color: #aaaab5;
-      line-height: 1.5;
+    .team-name {
+      font-weight: 900;
+    }
+
+    .versus {
+      color: var(--gris);
+      font-size: 12px;
+    }
+
+    /* =========================
+       TABLE
+    ========================= */
+
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--bordure);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+      background: var(--noir2);
+    }
+
+    th,
+    td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--bordure);
+    }
+
+    th {
+      color: #bbb;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    td {
       font-size: 14px;
     }
 
-    .categories {
+    /* =========================
+       FORMS
+    ========================= */
+
+    .form-card {
+      background: var(--noir2);
+      border: 1px solid var(--bordure);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 13px;
     }
 
-    .category {
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 15px;
-      background: linear-gradient(145deg, #17171f, #101015);
-      border: 1px solid #30303b;
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
     }
 
-    .category strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 7px;
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid var(--bordure);
+      background: #0d0d13;
+      color: white;
+      outline: none;
     }
 
-    .category small {
-      color: #9999a5;
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--violet);
     }
 
-    .highlight {
-      margin-top: 15px;
-      padding: 25px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #e51b35, #7225d6);
-      text-align: center;
+    textarea {
+      min-height: 110px;
+      resize: vertical;
     }
 
-    .highlight h2 {
+    /* =========================
+       NEWS
+    ========================= */
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .news-card h3 {
       margin-bottom: 8px;
     }
 
-    footer {
-      padding: 30px 20px;
-      text-align: center;
-      border-top: 1px solid #252530;
-      color: #888894;
+    .news-card p {
+      color: var(--gris);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ADMIN
+    ========================= */
+
+    .admin-section {
+      background: linear-gradient(180deg, #101016, #08080c);
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .admin-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .notice {
+      margin-top: 12px;
+      padding: 13px;
+      background: #15151d;
+      border: 1px solid var(--bordure);
+      border-radius: 10px;
+      color: #ddd;
       font-size: 13px;
     }
-/* TABLEAU KCL2026 */
 
-.bracket-wrap{
-  background:var(--noir2);
-  border:1px solid var(--bordure);
-  border-radius:18px;
-  padding:18px;
-  overflow-x:auto;
-}
+    .danger-zone {
+      margin-top: 15px;
+      background: #291116;
+      border: 1px solid #59202a;
+      border-radius: 15px;
+      padding: 20px;
+    }
 
-.category-switch{
-  display:flex;
-  gap:10px;
-  margin-bottom:20px;
-}
+    /* =========================
+       FOOTER
+    ========================= */
 
-.switch-btn{
-  flex:1;
-  min-height:45px;
-  border:1px solid var(--bordure);
-  background:#191921;
-  color:white;
-  border-radius:10px;
-  font-weight:900;
-  cursor:pointer;
-}
+    footer {
+      border-top: 1px solid var(--bordure);
+      padding: 35px 0;
+      color: var(--gris);
+      font-size: 13px;
+    }
 
-.switch-btn.active{
-  background:linear-gradient(90deg,var(--rouge),var(--violet));
-  border-color:transparent;
-}
+    footer strong {
+      color: white;
+    }
 
-.bracket{
-  min-width:900px;
-  display:grid;
-  grid-template-columns:1.3fr 1.3fr 1.3fr 1.2fr;
-  gap:18px;
-}
+    .hidden {
+      display: none !important;
+    }
 
-.round{
-  display:flex;
-  flex-direction:column;
-}
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      padding: 14px 17px;
+      background: #181820;
+      border: 1px solid var(--bordure);
+      border-radius: 10px;
+      box-shadow: 0 10px 35px #0008;
+    }
 
-.round-title{
-  text-align:center;
-  color:#b86cff;
-  font-size:12px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin:6px 0 12px;
-}
+    /* =========================
+       MOBILE
+    ========================= */
 
-.round-grid{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-around;
-  flex:1;
-  gap:12px;
-}
+    @media (max-width: 850px) {
 
-.match{
-  background:#191921;
-  border:1px solid #30303b;
-  border-radius:10px;
-  padding:8px;
-}
-
-.match div{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:8px 5px;
-  color:#ddd;
-  font-size:11px;
-  font-weight:700;
-  border-bottom:1px solid #292932;
-}
-
-.match div:last-child{
-  border-bottom:none;
-}
-
-.match span{
-  color:#bdbdca;
-  margin-left:8px;
-}
-
-.champion{
-  margin-top:18px;
-  text-align:center;
-  padding:16px;
-  border:1px solid #7d3cbd55;
-  background:linear-gradient(135deg,#e51b3530,#8b35ff30);
-  border-radius:14px;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.champion:first-letter{
-  font-size:30px;
-}
-
-.champion strong{
-  font-size:11px;
-  color:#c8a7ff;
-  letter-spacing:1px;
-}
-
-.champion span{
-  font-size:16px;
-  font-weight:900;
-}
-
-.bracket-note{
-  margin-top:15px;
-  color:var(--gris);
-  font-size:12px;
-  text-align:center;
-}
-    @media (min-width: 700px) {
-      .hero {
-        padding: 100px 12%;
+      nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 74px;
+        background: #09090e;
+        padding: 17px;
+        flex-direction: column;
+        align-items: stretch;
+        border-bottom: 1px solid var(--bordure);
       }
 
-      h1 {
-        font-size: 72px;
+      nav.open {
+        display: flex;
       }
 
-      .buttons {
-        flex-direction: row;
+      nav a {
+        padding: 8px 0;
       }
 
-      .btn {
-        min-width: 180px;
+      .menu-button {
+        display: block;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-logo {
+        order: -1;
+        min-height: 230px;
       }
 
       .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .section {
-        padding: 70px 12%;
+      .matches-grid,
+      .news-grid,
+      .admin-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      section {
+        padding: 50px 0;
       }
     }
   </style>
@@ -350,337 +624,2250 @@
 
 <body>
 
-  <header>
-    <div class="logo">KCL<span>2026</span></div>
-    <div class="menu">☰</div>
-  </header>
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-  <main>
+<header>
 
-    <section class="hero">
+  <div class="container nav">
 
-      <div class="badge">🏆 TOURNOI OFFICIEL</div>
+    <a href="#accueil" class="brand">
+
+      <img
+        src="logo-kcl.png"
+        alt="Logo officiel KCL2026"
+        onerror="this.style.display='none'"
+      >
+
+      <span class="brand-name">
+        KCL2026
+      </span>
+
+    </a>
+
+    <button
+      class="menu-button"
+      onclick="toggleMenu()"
+    >
+      ☰ Menu
+    </button>
+
+    <nav id="navigation">
+
+      <a href="#tournoi" onclick="closeMenu()">Tournoi</a>
+
+      <a href="#tableau" onclick="closeMenu()">Tableau</a>
+
+      <a href="#matchs" onclick="closeMenu()">Matchs</a>
+
+      <a href="#equipes" onclick="closeMenu()">Équipes</a>
+
+      <a href="#joueurs" onclick="closeMenu()">Joueurs</a>
+
+      <a href="#stats" onclick="closeMenu()">Stats</a>
+
+      <a href="#inscription" onclick="closeMenu()">Inscription</a>
+
+      <a href="#admin" onclick="closeMenu()">Admin</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     CONTENU
+========================================================= -->
+
+<main>
+
+
+<!-- ===================== ACCUEIL ====================== -->
+
+<section class="hero" id="accueil">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <span class="badge">
+        🏆 TOURNOI OFFICIEL • KCL2026
+      </span>
 
       <h1>
         LA KING'S<br>
-        <span>CHAMPION'S LEAGUE</span>
+        CHAMPION'S LEAGUE
       </h1>
 
-      <div class="slogan">EARN THE CROWN</div>
+      <div class="slogan">
+        EARN THE CROWN
+      </div>
 
-      <p class="info">
-        8 — 11 DÉCEMBRE 2026<br>
-        📍 Terrain de basketball de l'UPN<br>
-        🏀 Basketball 5 contre 5
+      <p class="hero-description">
+
+        Bienvenue sur la plateforme officielle de la
+        <strong>LA KING'S CHAMPION'S LEAGUE</strong>.
+
+        Un tournoi de basketball 5 contre 5 organisé à
+        Kinshasa avec une compétition masculine et féminine.
+
       </p>
 
-      <div class="buttons">
-        <a href="#tableau" class="btn primary">
-          VOIR LE TABLEAU
+      <div class="hero-actions">
+
+        <a
+          href="#tableau"
+          class="button"
+        >
+          Voir le tableau
         </a>
 
-        <a href="#matchs" class="btn secondary">
-          VOIR LES MATCHS
+        <a
+          href="#inscription"
+          class="button button-secondary"
+        >
+          Inscrire une équipe
         </a>
-      </div>
-
-    </section>
-
-
-    <section class="section">
-
-      <h2 class="section-title">Le tournoi</h2>
-
-      <div class="categories">
-
-        <div class="category">
-          <strong>🏀 MASCULIN</strong>
-          <small>16 équipes</small>
-        </div>
-
-        <div class="category">
-          <strong>🏀 FÉMININ</strong>
-          <small>16 équipes</small>
-        </div>
 
       </div>
 
-    </section>
+    </div>
 
 
-    <section class="section" id="tableau">
-  <div class="section-header">
-    <div class="section-label">Compétition</div>
-    <h2 class="section-title">Tableau du tournoi</h2>
-    <p class="section-description">
-      16 équipes par catégorie — élimination directe :
-      huitièmes, quarts, demi-finales et finale.
-    </p>
+    <div class="hero-logo">
+
+      <img
+        src="logo-kcl.png"
+        alt="Logo officiel LA KING'S CHAMPION'S LEAGUE"
+      >
+
+    </div>
+
   </div>
 
-  <div class="bracket-wrap">
+</section>
 
-    <div class="category-switch">
-      <button class="switch-btn active" onclick="showBracket('masculin')">
-        🏀 MASCULIN
-      </button>
 
-      <button class="switch-btn" onclick="showBracket('feminin')">
-        🏀 FÉMININ
-      </button>
+<!-- ===================== INFORMATIONS ====================== -->
+
+<section id="tournoi">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Le tournoi
+      </h2>
+
+      <p>
+        Les informations principales de KCL2026.
+      </p>
+
     </div>
 
-    <!-- ================= MASCULIN ================= -->
 
-    <div id="bracketMasculin" class="bracket">
+    <div class="cards">
 
-      <div class="round">
-        <div class="round-title">Huitièmes</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          8–11
+        </span>
 
-          <div class="match">
-            <div>Équipe 01 <span>—</span></div>
-            <div>Équipe 02 <span>—</span></div>
-          </div>
+        <span class="info-label">
+          Décembre 2026
+        </span>
 
-          <div class="match">
-            <div>Équipe 03 <span>—</span></div>
-            <div>Équipe 04 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 05 <span>—</span></div>
-            <div>Équipe 06 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 07 <span>—</span></div>
-            <div>Équipe 08 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 09 <span>—</span></div>
-            <div>Équipe 10 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 11 <span>—</span></div>
-            <div>Équipe 12 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 13 <span>—</span></div>
-            <div>Équipe 14 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 15 <span>—</span></div>
-            <div>Équipe 16 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Quarts</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          UPN
+        </span>
 
-          <div class="match">
-            <div>Vainqueur H1 <span>—</span></div>
-            <div>Vainqueur H2 <span>—</span></div>
-          </div>
+        <span class="info-label">
+          Terrain de basketball
+        </span>
 
-          <div class="match">
-            <div>Vainqueur H3 <span>—</span></div>
-            <div>Vainqueur H4 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Vainqueur H5 <span>—</span></div>
-            <div>Vainqueur H6 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Vainqueur H7 <span>—</span></div>
-            <div>Vainqueur H8 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Demi-finales</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          32
+        </span>
 
-          <div class="match">
-            <div>Vainqueur Q1 <span>—</span></div>
-            <div>Vainqueur Q2 <span>—</span></div>
-          </div>
+        <span class="info-label">
+          Équipes prévues
+        </span>
 
-          <div class="match">
-            <div>Vainqueur Q3 <span>—</span></div>
-            <div>Vainqueur Q4 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Finale</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          5v5
+        </span>
 
-          <div class="match">
-            <div>Vainqueur D1 <span>—</span></div>
-            <div>Vainqueur D2 <span>—</span></div>
-          </div>
-
-        </div>
-
-        <div class="champion">
-          🏆
-          <strong>CHAMPION KCL2026</strong>
-          <span>À déterminer</span>
-        </div>
+        <span class="info-label">
+          3 × 10 minutes
+        </span>
 
       </div>
 
     </div>
 
 
-    <!-- ================= FÉMININ ================= -->
+    <div class="cards" style="margin-top:15px;">
 
-    <div id="bracketFeminin" class="bracket" style="display:none">
+      <div class="card">
 
-      <div class="round">
-        <div class="round-title">Huitièmes</div>
+        <span class="info-number">
+          16
+        </span>
 
-        <div class="round-grid">
+        <span class="info-label">
+          Équipes masculines
+        </span>
 
-          <div class="match">
-            <div>Équipe 01 <span>—</span></div>
-            <div>Équipe 02 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 03 <span>—</span></div>
-            <div>Équipe 04 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 05 <span>—</span></div>
-            <div>Équipe 06 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 07 <span>—</span></div>
-            <div>Équipe 08 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 09 <span>—</span></div>
-            <div>Équipe 10 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 11 <span>—</span></div>
-            <div>Équipe 12 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 13 <span>—</span></div>
-            <div>Équipe 14 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Équipe 15 <span>—</span></div>
-            <div>Équipe 16 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Quarts</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          16
+        </span>
 
-          <div class="match">
-            <div>Vainqueur H1 <span>—</span></div>
-            <div>Vainqueur H2 <span>—</span></div>
-          </div>
+        <span class="info-label">
+          Équipes féminines
+        </span>
 
-          <div class="match">
-            <div>Vainqueur H3 <span>—</span></div>
-            <div>Vainqueur H4 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Vainqueur H5 <span>—</span></div>
-            <div>Vainqueur H6 <span>—</span></div>
-          </div>
-
-          <div class="match">
-            <div>Vainqueur H7 <span>—</span></div>
-            <div>Vainqueur H8 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Demi-finales</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          12
+        </span>
 
-          <div class="match">
-            <div>Vainqueur Q1 <span>—</span></div>
-            <div>Vainqueur Q2 <span>—</span></div>
-          </div>
+        <span class="info-label">
+          Joueurs maximum par équipe
+        </span>
 
-          <div class="match">
-            <div>Vainqueur Q3 <span>—</span></div>
-            <div>Vainqueur Q4 <span>—</span></div>
-          </div>
-
-        </div>
       </div>
 
 
-      <div class="round">
-        <div class="round-title">Finale</div>
+      <div class="card">
 
-        <div class="round-grid">
+        <span class="info-number">
+          $120
+        </span>
 
-          <div class="match">
-            <div>Vainqueur D1 <span>—</span></div>
-            <div>Vainqueur D2 <span>—</span></div>
-          </div>
-
-        </div>
-
-        <div class="champion">
-          🏆
-          <strong>CHAMPION KCL2026</strong>
-          <span>À déterminer</span>
-        </div>
+        <span class="info-label">
+          Participation par équipe
+        </span>
 
       </div>
 
     </div>
-
-    <p class="bracket-note">
-      Les équipes, scores et vainqueurs seront remplacés par les données
-      officielles après confirmation des participants.
-    </p>
 
   </div>
-    </section>
+
+</section>
+
+
+<!-- ===================== TABLEAU ====================== -->
+
+<section id="tableau">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Tableau du tournoi
+      </h2>
+
+      <p>
+        Élimination directe : huitièmes → quarts → demi-finales → finale.
+      </p>
+
+    </div>
+
+
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        id="tabMasculin"
+        onclick="setCategory('Masculin')"
+      >
+        Masculin
+      </button>
+
+      <button
+        class="tab"
+        id="tabFeminin"
+        onclick="setCategory('Féminin')"
+      >
+        Féminin
+      </button>
+
+    </div>
+
+
+    <div class="bracket-container">
+
+      <div
+        class="bracket"
+        id="bracket"
+      >
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== MATCHS ====================== -->
+
+<section id="matchs">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Matchs
+      </h2>
+
+      <p>
+        Calendrier et résultats du tournoi.
+      </p>
+
+    </div>
+
+
+    <div
+      class="matches-grid"
+      id="matchesList"
+    >
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== EQUIPES ====================== -->
+
+<section id="equipes">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Équipes
+      </h2>
+
+      <p>
+        Les équipes seront ajoutées et confirmées par l'administration.
+      </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              #
+            </th>
+
+            <th>
+              Équipe
+            </th>
+
+            <th>
+              Catégorie
+            </th>
+
+            <th>
+              Statut
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="teamsList">
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== JOUEURS ====================== -->
+
+<section id="joueurs">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Joueurs
+      </h2>
+
+      <p>
+        Registre officiel des joueurs.
+      </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Joueur
+            </th>
+
+            <th>
+              Équipe
+            </th>
+
+            <th>
+              Catégorie
+            </th>
+
+            <th>
+              Points
+            </th>
+
+            <th>
+              Passes
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="playersList">
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== STATISTIQUES ====================== -->
+
+<section id="stats">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Statistiques
+      </h2>
+
+      <p>
+        Statistiques actuellement disponibles : points et passes.
+      </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Joueur
+            </th>
+
+            <th>
+              Équipe
+            </th>
+
+            <th>
+              Points
+            </th>
+
+            <th>
+              Passes
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="statsList">
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== INSCRIPTION ====================== -->
+
+<section id="inscription">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Inscription d'une équipe
+      </h2>
+
+      <p>
+        Envoyez une demande de participation à KCL2026.
+      </p>
+
+    </div>
+
+
+    <div class="form-card">
+
+      <form id="registrationForm">
+
+        <div class="form-grid">
+
+          <input
+            id="registrationTeam"
+            type="text"
+            placeholder="Nom de l'équipe"
+            required
+          >
+
+          <select id="registrationCategory">
+
+            <option value="Masculin">
+              Masculin
+            </option>
+
+            <option value="Féminin">
+              Féminin
+            </option>
+
+          </select>
+
+
+          <input
+            id="registrationManager"
+            type="text"
+            placeholder="Nom du responsable"
+            required
+          >
+
+
+          <input
+            id="registrationPhone"
+            type="tel"
+            placeholder="Téléphone"
+            required
+          >
+
+        </div>
+
+
+        <textarea
+          id="registrationMessage"
+          placeholder="Informations complémentaires"
+        ></textarea>
+
+
+        <button
+          class="button"
+          type="submit"
+        >
+          Envoyer la demande
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== ACTUALITES ====================== -->
+
+<section id="actualites">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Actualités
+      </h2>
+
+      <p>
+        Communiqués et informations KCL2026.
+      </p>
+
+    </div>
+
+
+    <div
+      class="news-grid"
+      id="newsList"
+    >
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== PARTENAIRES ====================== -->
+
+<section id="partenaires">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Partenaire
+      </h2>
+
+      <p>
+        Passion • Discipline • Excellence
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <span class="info-number">
+        KCS
+      </span>
+
+      <span class="info-label">
+        Kinshasa Culture Sportif
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================== ADMIN ====================== -->
+
+<section
+  id="admin"
+  class="admin-section"
+>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Administration
+      </h2>
+
+      <p>
+        Gestion de démonstration du tournoi.
+      </p>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <div
+      class="form-card"
+      id="adminLogin"
+    >
+
+      <form id="loginForm">
+
+        <input
+          id="adminPassword"
+          type="password"
+          placeholder="Mot de passe administrateur"
+          required
+        >
+
+        <button
+          class="button"
+          type="submit"
+        >
+          Ouvrir l'administration
+        </button>
+
+      </form>
+
+
+      <div class="notice">
+
+        Mot de passe de démonstration :
+        <strong>KCL2026ADMIN</strong>
+
+        <br><br>
+
+        ⚠️ Ce mot de passe est uniquement destiné à cette version de démonstration.
+        Il devra être remplacé lorsque nous connecterons une vraie base de données.
+
+      </div>
+
+    </div>
+
+
+    <!-- PANNEAU ADMIN -->
+
+    <div
+      id="adminPanel"
+      class="hidden"
+    >
+
+
+      <div class="admin-grid">
+
+
+        <!-- AJOUT EQUIPE -->
+
+        <div class="form-card admin-card">
+
+          <h3>
+            Ajouter une équipe
+          </h3>
+
+          <form id="teamForm">
+
+            <input
+              id="teamName"
+              type="text"
+              placeholder="Nom de l'équipe"
+              required
+            >
+
+            <select id="teamCategory">
+
+              <option value="Masculin">
+                Masculin
+              </option>
+
+              <option value="Féminin">
+                Féminin
+              </option>
+
+            </select>
+
+
+            <button
+              class="button"
+              type="submit"
+            >
+              Ajouter l'équipe
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- AJOUT JOUEUR -->
+
+        <div class="form-card admin-card">
+
+          <h3>
+            Ajouter un joueur
+          </h3>
+
+          <form id="playerForm">
+
+            <input
+              id="playerName"
+              type="text"
+              placeholder="Nom du joueur"
+              required
+            >
+
+            <input
+              id="playerTeam"
+              type="text"
+              placeholder="Équipe"
+              required
+            >
+
+            <select id="playerCategory">
+
+              <option value="Masculin">
+                Masculin
+              </option>
+
+              <option value="Féminin">
+                Féminin
+              </option>
+
+            </select>
+
+
+            <input
+              id="playerPoints"
+              type="number"
+              min="0"
+              value="0"
+              placeholder="Points"
+            >
+
+
+            <input
+              id="playerAssists"
+              type="number"
+              min="0"
+              value="0"
+              placeholder="Passes"
+            >
+
+
+            <button
+              class="button"
+              type="submit"
+            >
+              Ajouter le joueur
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- ACTUALITE -->
+
+        <div class="form-card admin-card">
+
+          <h3>
+            Publier une actualité
+          </h3>
+
+          <form id="newsForm">
+
+            <input
+              id="newsTitle"
+              type="text"
+              placeholder="Titre"
+              required
+            >
+
+            <textarea
+              id="newsText"
+              placeholder="Texte de l'actualité"
+              required
+            ></textarea>
+
+
+            <button
+              class="button"
+              type="submit"
+            >
+              Publier
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+
+      <!-- RESULTATS -->
+
+      <div
+        class="form-card"
+        style="margin-top:15px;"
+      >
+
+        <h3>
+          Enregistrer un résultat
+        </h3>
+
+        <br>
+
+        <form id="resultForm">
+
+          <div class="form-grid">
+
+            <input
+              id="resultLabel"
+              type="text"
+              placeholder="Ex : Huitième de finale — Match 1"
+              required
+            >
+
+            <input
+              id="resultTeamA"
+              type="text"
+              placeholder="Équipe A"
+              required
+            >
+
+            <input
+              id="resultTeamB"
+              type="text"
+              placeholder="Équipe B"
+              required
+            >
+
+            <input
+              id="resultScoreA"
+              type="number"
+              min="0"
+              placeholder="Score A"
+              required
+            >
+
+            <input
+              id="resultScoreB"
+              type="number"
+              min="0"
+              placeholder="Score B"
+              required
+            >
+
+          </div>
+
+
+          <button
+            class="button"
+            type="submit"
+          >
+            Enregistrer le résultat
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- BASE -->
+
+      <div class="danger-zone">
+
+        <h3>
+          Base de données locale
+        </h3>
+
+        <br>
+
+        <p style="color:#bbb;font-size:14px;">
+
+          Cette version sauvegarde les données dans le navigateur
+          grâce à <strong>localStorage</strong>.
+
+          Les données ne sont donc pas encore partagées avec les
+          autres visiteurs du site.
+
+        </p>
+
+
+        <br>
+
+        <button
+          class="button button-secondary"
+          onclick="resetDatabase()"
+        >
+          Réinitialiser les données
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+  <div class="container">
+
+    <strong>
+      KCL2026 — LA KING'S CHAMPION'S LEAGUE
+    </strong>
+
+    <br>
+
+    EARN THE CROWN
+
+    <br><br>
+
+    📍 Terrain de basketball de l'UPN
+
+    <br>
+
+    📅 8–11 décembre 2026
+
+    <br>
+
+    📞 +243 970 349 910
+
+    <br><br>
+
+    © 2026 KCL2026 — Tous droits réservés.
+
+  </div>
+
+</footer>
+
+
+<div
+  id="toast"
+  class="toast hidden"
+></div>
+
+
+<!-- =========================================================
+     JAVASCRIPT / BASE DE DONNEES
+========================================================= -->
+
+<script>
+
+  /*
+   ============================================================
+   BASE DE DONNEES LOCALE KCL2026
+   ============================================================
+
+   Pour cette première version :
+
+   - équipes
+   - joueurs
+   - actualités
+   - résultats
+   - inscriptions
+
+   sont sauvegardés dans localStorage.
+
+   Plus tard nous remplacerons cela par Supabase
+   pour avoir une vraie base de données en ligne.
+  */
+
+  const DATABASE_KEY = "KCL2026_DATABASE_V1";
+
+
+  /*
+   =========================
+   DONNEES INITIALES
+  =========================
+  */
+
+  const initialDatabase = {
+
+    teams: [
+      ...Array.from(
+        { length: 16 },
+        (_, index) => ({
+          id: "M" + (index + 1),
+          name: "Équipe M" + (index + 1),
+          category: "Masculin",
+          confirmed: false
+        })
+      ),
+
+      ...Array.from(
+        { length: 16 },
+        (_, index) => ({
+          id: "F" + (index + 1),
+          name: "Équipe F" + (index + 1),
+          category: "Féminin",
+          confirmed: false
+        })
+      )
+    ],
+
+
+    players: [],
+
+
+    registrations: [],
+
+
+    news: [
+
+      {
+        id: 1,
+        title: "KCL2026",
+        text: "La plateforme officielle de LA KING'S CHAMPION'S LEAGUE est en ligne."
+      },
+
+      {
+        id: 2,
+        title: "EARN THE CROWN",
+        text: "Préparez vos équipes pour la compétition des 8 au 11 décembre 2026."
+      }
+
+    ],
+
+
+    results: []
+
+  };
+
+
+  /*
+   =========================
+   CHARGEMENT BASE
+  =========================
+  */
+
+  function loadDatabase() {
+
+    try {
+
+      const saved =
+        localStorage.getItem(DATABASE_KEY);
+
+      if (saved) {
+
+        return JSON.parse(saved);
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
+
+    return JSON.parse(
+      JSON.stringify(initialDatabase)
+    );
+
+  }
+
+
+  let database = loadDatabase();
+
+
+  /*
+   =========================
+   SAUVEGARDE
+  =========================
+  */
+
+  function saveDatabase() {
+
+    localStorage.setItem(
+      DATABASE_KEY,
+      JSON.stringify(database)
+    );
+
+    renderEverything();
+
+  }
+
+
+  /*
+   =========================
+   SECURITE HTML
+  =========================
+  */
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /*
+   =========================
+   NOTIFICATION
+  =========================
+  */
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.remove("hidden");
+
+    setTimeout(() => {
+
+      toast.classList.add("hidden");
+
+    }, 2800);
+
+  }
+
+
+  /*
+   =========================
+   MENU MOBILE
+  =========================
+  */
+
+  function toggleMenu() {
+
+    document
+      .getElementById("navigation")
+      .classList.toggle("open");
+
+  }
+
+
+  function closeMenu() {
+
+    document
+      .getElementById("navigation")
+      .classList.remove("open");
+
+  }
+
+
+  /*
+   =========================
+   CATEGORIE TABLEAU
+  =========================
+  */
+
+  let currentCategory = "Masculin";
+
+
+  function setCategory(category) {
+
+    currentCategory = category;
+
+
+    document
+      .getElementById("tabMasculin")
+      .classList.toggle(
+        "active",
+        category === "Masculin"
+      );
+
+
+    document
+      .getElementById("tabFeminin")
+      .classList.toggle(
+        "active",
+        category === "Féminin"
+      );
+
+
+    renderBracket();
+
+  }
+
+
+  /*
+   =========================
+   NOMS EQUIPES
+  =========================
+  */
+
+  function getTeamsForCategory(category) {
+
+    return database.teams
+      .filter(team => team.category === category)
+      .slice(0, 16)
+      .map(team => team.name);
+
+  }
+
+
+  /*
+   =========================
+   TABLEAU 16 EQUIPES
+  =========================
+  */
+
+  function renderBracket() {
+
+    const names =
+      getTeamsForCategory(currentCategory);
+
+
+    while (names.length < 16) {
+
+      names.push("À confirmer");
+
+    }
+
+
+    const rounds = [
+
+      {
+        title: "Huitièmes de finale",
+
+        matches: [
+
+          [names[0], names[1]],
+          [names[2], names[3]],
+          [names[4], names[5]],
+          [names[6], names[7]],
+          [names[8], names[9]],
+          [names[10], names[11]],
+          [names[12], names[13]],
+          [names[14], names[15]]
+
+        ]
+
+      },
+
+
+      {
+        title: "Quarts de finale",
+
+        matches: [
+
+          ["Vainqueur H1", "Vainqueur H2"],
+          ["Vainqueur H3", "Vainqueur H4"],
+          ["Vainqueur H5", "Vainqueur H6"],
+          ["Vainqueur H7", "Vainqueur H8"]
+
+        ]
+
+      },
+
+
+      {
+        title: "Demi-finales",
+
+        matches: [
+
+          ["Vainqueur Q1", "Vainqueur Q2"],
+          ["Vainqueur Q3", "Vainqueur Q4"]
+
+        ]
+
+      },
+
+
+      {
+        title: "Finale",
+
+        matches: [
+
+          ["Vainqueur D1", "Vainqueur D2"]
+
+        ]
+
+      }
+
+    ];
+
+
+    const bracket =
+      document.getElementById("bracket");
+
+
+    bracket.innerHTML =
+      rounds
+        .map((round, roundIndex) => {
+
+          return `
+
+            <div class="round">
+
+              <div class="round-title">
+                ${round.title}
+              </div>
+
+              ${round.matches
+                .map((match, matchIndex) => {
+
+                  return `
+
+                    <div class="bracket-match">
+
+                      <div class="bracket-team">
+
+                        <span>
+                          ${escapeHTML(match[0])}
+                        </span>
+
+                        <span class="score">
+                          —
+                        </span>
+
+                      </div>
+
+
+                      <div class="bracket-team">
+
+                        <span>
+                          ${escapeHTML(match[1])}
+                        </span>
+
+                        <span class="score">
+                          —
+                        </span>
+
+                      </div>
+
+
+                      <div class="match-status">
+                        À jouer
+                      </div>
+
+                    </div>
+
+                  `;
+
+                })
+                .join("")}
+
+            </div>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /*
+   =========================
+   MATCHS / RESULTATS
+  =========================
+  */
+
+  function renderMatches() {
+
+    const container =
+      document.getElementById("matchesList");
+
+
+    if (!database.results.length) {
+
+      container.innerHTML = `
+
+        <div class="card">
+
+          <strong>
+            Calendrier à venir
+          </strong>
+
+          <br>
+
+          <span class="info-label">
+
+            Les matchs seront ajoutés par
+            l'administration.
+
+          </span>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      database.results
+        .map(result => {
+
+          return `
+
+            <div class="match-card">
+
+              <div class="match-header">
+
+                <span>
+                  ${escapeHTML(result.label)}
+                </span>
+
+                <span>
+                  Résultat
+                </span>
+
+              </div>
+
+
+              <div class="teams-versus">
+
+                <div class="team-name">
+
+                  ${escapeHTML(result.teamA)}
+
+                  <br>
+
+                  <strong>
+                    ${result.scoreA}
+                  </strong>
+
+                </div>
+
+
+                <div class="versus">
+                  VS
+                </div>
+
+
+                <div class="team-name">
+
+                  ${escapeHTML(result.teamB)}
+
+                  <br>
+
+                  <strong>
+                    ${result.scoreB}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /*
+   =========================
+   EQUIPES
+  =========================
+  */
+
+  function renderTeams() {
+
+    const tbody =
+      document.getElementById("teamsList");
+
+
+    tbody.innerHTML =
+      database.teams
+        .map((team, index) => {
+
+          return `
+
+            <tr>
+
+              <td>
+                ${index + 1}
+              </td>
+
+              <td>
+                <strong>
+                  ${escapeHTML(team.name)}
+                </strong>
+              </td>
+
+              <td>
+                ${escapeHTML(team.category)}
+              </td>
+
+              <td>
+
+                ${
+                  team.confirmed
+                    ? "Confirmée"
+                    : "À confirmer"
+                }
+
+              </td>
+
+            </tr>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /*
+   =========================
+   JOUEURS
+  =========================
+  */
+
+  function renderPlayers() {
+
+    const tbody =
+      document.getElementById("playersList");
+
+
+    if (!database.players.length) {
+
+      tbody.innerHTML = `
+
+        <tr>
+
+          <td colspan="5">
+
+            <span class="info-label">
+              Aucun joueur enregistré pour le moment.
+            </span>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    } else {
+
+      tbody.innerHTML =
+        database.players
+          .map(player => {
+
+            return `
+
+              <tr>
+
+                <td>
+                  ${escapeHTML(player.name)}
+                </td>
+
+                <td>
+                  ${escapeHTML(player.team)}
+                </td>
+
+                <td>
+                  ${escapeHTML(player.category)}
+                </td>
+
+                <td>
+                  ${player.points}
+                </td>
+
+                <td>
+                  ${player.assists}
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join("");
+
+    }
+
+
+    renderStats();
+
+  }
+
+
+  /*
+   =========================
+   STATISTIQUES
+  =========================
+  */
+
+  function renderStats() {
+
+    const tbody =
+      document.getElementById("statsList");
+
+
+    if (!database.players.length) {
+
+      tbody.innerHTML = `
+
+        <tr>
+
+          <td colspan="4">
+
+            <span class="info-label">
+              Les statistiques apparaîtront ici.
+            </span>
+
+          </td>
+
+        </tr>
+
+      `;
+
+      return;
+
+    }
+
+
+    const players =
+      [...database.players]
+        .sort((a, b) => b.points - a.points);
+
+
+    tbody.innerHTML =
+      players
+        .map(player => {
+
+          return `
+
+            <tr>
+
+              <td>
+                ${escapeHTML(player.name)}
+              </td>
+
+              <td>
+                ${escapeHTML(player.team)}
+              </td>
+
+              <td>
+                <strong>
+                  ${player.points}
+                </strong>
+              </td>
+
+              <td>
+                ${player.assists}
+              </td>
+
+            </tr>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /*
+   =========================
+   ACTUALITES
+  =========================
+  */
+
+  function renderNews() {
+
+    const container =
+      document.getElementById("newsList");
+
+
+    container.innerHTML =
+      database.news
+        .map(news => {
+
+          return `
+
+            <article class="card news-card">
+
+              <h3>
+                ${escapeHTML(news.title)}
+              </h3>
+
+              <p>
+                ${escapeHTML(news.text)}
+              </p>
+
+            </article>
+
+          `;
+
+        })
+        .join("");
+
+  }
+
+
+  /*
+   =========================
+   INSCRIPTION
+  =========================
+  */
+
+  document
+    .getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const registration = {
+
+        id: Date.now(),
+
+        team:
+          document
+            .getElementById("registrationTeam")
+            .value
+            .trim(),
+
+        category:
+          document
+            .getElementById("registrationCategory")
+            .value,
+
+        manager:
+          document
+            .getElementById("registrationManager")
+            .value
+            .trim(),
+
+        phone:
+          document
+            .getElementById("registrationPhone")
+            .value
+            .trim(),
+
+        message:
+          document
+            .getElementById("registrationMessage")
+            .value
+            .trim(),
+
+        date:
+          new Date().toISOString()
+
+      };
+
+
+      database.registrations.push(
+        registration
+      );
+
+
+      saveDatabase();
+
+
+      this.reset();
+
+
+      showToast(
+        "Demande d'inscription enregistrée."
+      );
+
+    });
+
+
+  /*
+   =========================
+   LOGIN ADMIN
+  =========================
+  */
+
+  document
+    .getElementById("loginForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const password =
+        document
+          .getElementById("adminPassword")
+          .value;
+
+
+      if (password === "KCL2026ADMIN") {
+
+        document
+          .getElementById("adminLogin")
+          .classList.add("hidden");
+
+
+        document
+          .getElementById("adminPanel")
+          .classList.remove("hidden");
+
+
+        showToast(
+          "Administration ouverte."
+        );
+
+      } else {
+
+        showToast(
+          "Mot de passe incorrect."
+        );
+
+      }
+
+    });
+
+
+  /*
+   =========================
+   AJOUT EQUIPE
+  =========================
+  */
+
+  document
+    .getElementById("teamForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const name =
+        document
+          .getElementById("teamName")
+          .value
+          .trim();
+
+
+      const category =
+        document
+          .getElementById("teamCategory")
+          .value;
+
+
+      if (!name) {
+
+        return;
+
+      }
+
+
+      database.teams.push({
+
+        id: "TEAM-" + Date.now(),
+
+        name: name,
+
+        category: category,
+
+        confirmed: true
+
+      });
+
+
+      saveDatabase();
+
+
+      this.reset();
+
+
+      showToast(
+        "Équipe ajoutée."
+      );
+
+    });
+
+
+  /*
+   =========================
+   AJOUT JOUEUR
+  =========================
+  */
+
+  document
+    .getElementById("playerForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const player = {
+
+        id: Date.now(),
+
+        name:
+          document
+            .getElementById("playerName")
+            .value
+            .trim(),
+
+        team:
+          document
+            .getElementById("playerTeam")
+            .value
+            .trim(),
+
+        category:
+          document
+            .getElementById("playerCategory")
+            .value,
+
+        points:
+          Number(
+            document
+              .getElementById("playerPoints")
+              .value || 0
+          ),
+
+        assists:
+          Number(
+            document
+              .getElementById("playerAssists")
+              .value || 0
+          )
+
+      };
+
+
+      database.players.push(
+        player
+      );
+
+
+      saveDatabase();
+
+
+      this.reset();
+
+
+      showToast(
+        "Joueur ajouté."
+      );
+
+    });
+
+
+  /*
+   =========================
+   AJOUT ACTUALITE
+  =========================
+  */
+
+  document
+    .getElementById("newsForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const news = {
+
+        id: Date.now(),
+
+        title:
+          document
+            .getElementById("newsTitle")
+            .value
+            .trim(),
+
+        text:
+          document
+            .getElementById("newsText")
+            .value
+            .trim()
+
+      };
+
+
+      database.news.unshift(
+        news
+      );
+
+
+      saveDatabase();
+
+
+      this.reset();
+
+
+      showToast(
+        "Actualité publiée."
+      );
+
+    });
+
+
+  /*
+   =========================
+   AJOUT RESULTAT
+  =========================
+  */
+
+  document
+    .getElementById("resultForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const result = {
+
+        id: Date.now(),
+
+        label:
+          document
+            .getElementById("resultLabel")
+            .value
+            .trim(),
+
+        teamA:
+          document
+            .getElementById("resultTeamA")
+            .value
+            .trim(),
+
+        teamB:
+          document
+            .getElementById("resultTeamB")
+            .value
+            .trim(),
+
+        scoreA:
+          Number(
+            document
+              .getElementById("resultScoreA")
+              .value
+          ),
+
+        scoreB:
+          Number(
+            document
+              .getElementById("resultScoreB")
+              .value
+          )
+
+      };
+
+
+      database.results.push(
+        result
+      );
+
+
+      saveDatabase();
+
+
+      this.reset();
+
+
+      showToast(
+        "Résultat enregistré."
+      );
+
+    });
+
+
+  /*
+   =========================
+   REINITIALISER
+  =========================
+  */
+
+  function resetDatabase() {
+
+    const confirmation =
+      confirm(
+        "Voulez-vous vraiment supprimer toutes les données locales KCL2026 ?"
+      );
+
+
+    if (!confirmation) {
+
+      return;
+
+    }
+
+
+    database =
+      JSON.parse(
+        JSON.stringify(initialDatabase)
+      );
+
+
+    saveDatabase();
+
+
+    showToast(
+      "Base locale réinitialisée."
+    );
+
+  }
+
+
+  /*
+   =========================
+   TOUT AFFICHER
+  =========================
+  */
+
+  function renderEverything() {
+
+    renderBracket();
+
+    renderMatches();
+
+    renderTeams();
+
+    renderPlayers();
+
+    renderNews();
+
+  }
+
+
+  /*
+   =========================
+   DEMARRAGE
+  =========================
+  */
+
+  renderEverything();
+
+</script>
+
+</body>
+  </html>
