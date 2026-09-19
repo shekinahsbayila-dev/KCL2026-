@@ -409,70 +409,278 @@
 
 
     <section class="section" id="tableau">
+  <div class="section-header">
+    <div class="section-label">Compétition</div>
+    <h2 class="section-title">Tableau du tournoi</h2>
+    <p class="section-description">
+      16 équipes par catégorie — élimination directe :
+      huitièmes, quarts, demi-finales et finale.
+    </p>
+  </div>
 
-      <h2 class="section-title">🏆 Le parcours vers la couronne</h2>
+  <div class="bracket-wrap">
 
-      <div class="cards">
+    <div class="category-switch">
+      <button class="switch-btn active" onclick="showBracket('masculin')">
+        🏀 MASCULIN
+      </button>
 
-        <div class="card">
-          <div class="card-icon">🔥</div>
-          <h3>Huitièmes</h3>
-          <p>16 équipes s'affrontent pour commencer la conquête de la couronne.</p>
+      <button class="switch-btn" onclick="showBracket('feminin')">
+        🏀 FÉMININ
+      </button>
+    </div>
+
+    <!-- ================= MASCULIN ================= -->
+
+    <div id="bracketMasculin" class="bracket">
+
+      <div class="round">
+        <div class="round-title">Huitièmes</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Équipe 01 <span>—</span></div>
+            <div>Équipe 02 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 03 <span>—</span></div>
+            <div>Équipe 04 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 05 <span>—</span></div>
+            <div>Équipe 06 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 07 <span>—</span></div>
+            <div>Équipe 08 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 09 <span>—</span></div>
+            <div>Équipe 10 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 11 <span>—</span></div>
+            <div>Équipe 12 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 13 <span>—</span></div>
+            <div>Équipe 14 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 15 <span>—</span></div>
+            <div>Équipe 16 <span>—</span></div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="round">
+        <div class="round-title">Quarts</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Vainqueur H1 <span>—</span></div>
+            <div>Vainqueur H2 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H3 <span>—</span></div>
+            <div>Vainqueur H4 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H5 <span>—</span></div>
+            <div>Vainqueur H6 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H7 <span>—</span></div>
+            <div>Vainqueur H8 <span>—</span></div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="round">
+        <div class="round-title">Demi-finales</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Vainqueur Q1 <span>—</span></div>
+            <div>Vainqueur Q2 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur Q3 <span>—</span></div>
+            <div>Vainqueur Q4 <span>—</span></div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="round">
+        <div class="round-title">Finale</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Vainqueur D1 <span>—</span></div>
+            <div>Vainqueur D2 <span>—</span></div>
+          </div>
+
         </div>
 
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Quarts</h3>
-          <p>Les équipes qualifiées poursuivent leur parcours vers le titre.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">👑</div>
-          <h3>Finale</h3>
-          <p>Un dernier match pour déterminer le champion KCL2026.</p>
+        <div class="champion">
+          🏆
+          <strong>CHAMPION KCL2026</strong>
+          <span>À déterminer</span>
         </div>
 
       </div>
 
-    </section>
+    </div>
 
 
-    <section class="section" id="matchs">
+    <!-- ================= FÉMININ ================= -->
 
-      <h2 class="section-title">📅 Matchs</h2>
+    <div id="bracketFeminin" class="bracket" style="display:none">
 
-      <div class="card">
-        <h3>Les matchs arrivent bientôt</h3>
-        <p>
-          Le calendrier officiel, les horaires et les résultats
-          seront affichés ici.
-        </p>
+      <div class="round">
+        <div class="round-title">Huitièmes</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Équipe 01 <span>—</span></div>
+            <div>Équipe 02 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 03 <span>—</span></div>
+            <div>Équipe 04 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 05 <span>—</span></div>
+            <div>Équipe 06 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 07 <span>—</span></div>
+            <div>Équipe 08 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 09 <span>—</span></div>
+            <div>Équipe 10 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 11 <span>—</span></div>
+            <div>Équipe 12 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 13 <span>—</span></div>
+            <div>Équipe 14 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Équipe 15 <span>—</span></div>
+            <div>Équipe 16 <span>—</span></div>
+          </div>
+
+        </div>
       </div>
 
-    </section>
 
+      <div class="round">
+        <div class="round-title">Quarts</div>
 
-    <section class="section">
+        <div class="round-grid">
 
-      <div class="highlight">
-        <h2>🏆 EARN THE CROWN</h2>
-        <p>
-          Fair-play • Respect • Discipline • Excellence
-        </p>
+          <div class="match">
+            <div>Vainqueur H1 <span>—</span></div>
+            <div>Vainqueur H2 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H3 <span>—</span></div>
+            <div>Vainqueur H4 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H5 <span>—</span></div>
+            <div>Vainqueur H6 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur H7 <span>—</span></div>
+            <div>Vainqueur H8 <span>—</span></div>
+          </div>
+
+        </div>
       </div>
 
+
+      <div class="round">
+        <div class="round-title">Demi-finales</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Vainqueur Q1 <span>—</span></div>
+            <div>Vainqueur Q2 <span>—</span></div>
+          </div>
+
+          <div class="match">
+            <div>Vainqueur Q3 <span>—</span></div>
+            <div>Vainqueur Q4 <span>—</span></div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="round">
+        <div class="round-title">Finale</div>
+
+        <div class="round-grid">
+
+          <div class="match">
+            <div>Vainqueur D1 <span>—</span></div>
+            <div>Vainqueur D2 <span>—</span></div>
+          </div>
+
+        </div>
+
+        <div class="champion">
+          🏆
+          <strong>CHAMPION KCL2026</strong>
+          <span>À déterminer</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p class="bracket-note">
+      Les équipes, scores et vainqueurs seront remplacés par les données
+      officielles après confirmation des participants.
+    </p>
+
+  </div>
     </section>
-
-  </main>
-
-
-  <footer>
-    <strong>LA KING'S CHAMPION'S LEAGUE — KCL2026</strong>
-    <br><br>
-    8 — 11 décembre 2026 • UPN
-    <br><br>
-    © KCL2026 — Tous droits réservés
-  </footer>
-
-</body>
-</html>
